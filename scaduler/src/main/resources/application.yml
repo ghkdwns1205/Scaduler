@@ -1,0 +1,13 @@
+spring:
+  thymeleaf:
+    prefix: classpath:/templates/
+    check-template-location: true   #디렉토리에 파일이 있는지 없는지 체크, 없으면 에러를 발생시킨다.
+    suffix: .html
+    mode: HTML5
+    cache: false  #운영시 true로 변경  false : 타임리프에 대한 캐시를 남기지 않는다
+    enabled: true #정적 리소스에 변화가 있을 때 바로 반영한다.
+    template-resolver-order: 1  # ViewResolver의 순서, 기본값 1
+      datasource:    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://localhost:3306/sca?serverTimezone=UTC&characterEncoding=UTF-8
+    username: root
+    password: soaksdkady1!
