@@ -11,9 +11,9 @@ public class JoinService {
 	@Autowired(required = false)
 	private JoinDao joinDao;
 	
-	public int setJoinMember(Map<String, Object> param) {
+	public int setJoinMember(JoinVO joinVO) {
 		
-		return joinDao.setJoinMember(param);
+		return joinDao.setJoinMember(joinVO);
 	}
 
 	

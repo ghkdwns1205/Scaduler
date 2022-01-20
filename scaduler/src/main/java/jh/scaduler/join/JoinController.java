@@ -10,6 +10,8 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import jh.scaduler.util.Util;
+
 
 @Controller
 public class JoinController {
@@ -24,14 +26,17 @@ public class JoinController {
 	}
 	
 	@RequestMapping(value="/join/member")
-	public String joinMember(@RequestParam Map<String, Object> param, Model model) {
+	public String joinMember(JoinVO joinVO, Model model) {
 		
-		System.out.println("id==="+param.get("userID"));
-		System.out.println("pass==="+param.get("userPass"));
-		System.out.println("phone==="+param.get("userPhone"));
-		System.out.println("email==="+param.get("userEmail"));
+		System.out.println("id==="+joinVO.getUserID());
+		System.out.println("pass==="+joinVO.getUserPass());
+		System.out.println("phone==="+joinVO.getUserPhone());
+		System.out.println("email==="+joinVO.getUserEmail());
 		
-		int a = joinService.setJoinMember(param);
+		joinVO.setUserPass(Util.ShaEncode(joinVO.getUserPass()));
+		
+		
+		int a = joinService.setJoinMember(joinVO);
 		System.out.println("a==="+a);
 		
 		if(a == 1)

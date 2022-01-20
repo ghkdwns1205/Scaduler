@@ -14,9 +14,9 @@ public class JoinDao {
 	@Autowired(required=false)
 	private SqlSessionTemplate sqlSession;
 	
-	public int setJoinMember(Map<String, Object> param) {
+	public int setJoinMember(JoinVO joinVO) {
 		
-		return sqlSession.insert("JoinDao.setJoinMember", param);
+		return sqlSession.insert("JoinDao.setJoinMember", joinVO);
 	}
 
 }
