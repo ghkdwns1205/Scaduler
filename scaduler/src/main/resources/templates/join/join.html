@@ -4,11 +4,19 @@
     <meta charset="UTF-8">
     <title>회원가입</title>
 </head>
+<script th:inline="javascript">
+
+
+function idCheck(){
+	alert('여기 되는가');	
+}
+
+</script>
 <body>
     회원가입페이지
     
     <form id="joinForm" action="join/member" method="post" >
-    	<span>아이디</span><input type="text" id="userID" name="userID" required="required"><br/>
+    	<span>아이디</span><input type="text" id="userID" name="userID" required="required"> <button th:onclick="javascript:idCheck();">중복확인</button><br/>
     	<span>비밀번호</span><input type="password" id="userPass" name="userPass" required="required"><br/>
     	<span>비밀번호 확인</span><input type="password" id="userPassCheck" name="userPassCheck" required="required"><br/>
     	<span>휴대폰 번호</span><input type="text" id="userPhone" name="userPhone" required="required"><br/>
