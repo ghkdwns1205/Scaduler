@@ -4,19 +4,40 @@
     <meta charset="UTF-8">
     <title>회원가입</title>
 </head>
+<script th:src="@{/js/jquery-1.11.0.min.js}"></script>
 <script th:inline="javascript">
 
 
 function idCheck(){
-	alert('여기 되는가');	
+	if($('#userID').val() == ""){
+		alert('아이디를 입력해주세요');
+	}else{
+		$.ajax({
+			url : '/join/idCheck',
+			data : {userID : $("#userID").val()},
+			type: 'POST',
+			success: function(obj){
+				if(obj.result == ok){
+					$("#id_chkPopup").html(data);
+				}else{
+					$("#id_chkPopup").html(data);
+				}
+			},
+			error : function(error){
+				alert('에러');
+				alert(error);
+			}
+		});
+	
+	 	
+	}
 }
-
 </script>
 <body>
     회원가입페이지
     
     <form id="joinForm" action="join/member" method="post" >
-    	<span>아이디</span><input type="text" id="userID" name="userID" required="required"> <button th:onclick="javascript:idCheck();">중복확인</button><br/>
+    	<span>아이디</span><input type="text" id="userID" name="userID" required="required"/> <button type="button" th:onclick="javascript:idCheck();">중복확인</button><br/>
     	<span>비밀번호</span><input type="password" id="userPass" name="userPass" required="required"><br/>
     	<span>비밀번호 확인</span><input type="password" id="userPassCheck" name="userPassCheck" required="required"><br/>
     	<span>휴대폰 번호</span><input type="text" id="userPhone" name="userPhone" required="required"><br/>
