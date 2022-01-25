@@ -10,6 +10,13 @@
 		]]>
 	</insert>
 	
+	<select id="getUserIdCheck" parameterType="string" resultType="string">
+		<![CDATA[
+			select userID from member
+			where userID = #{userID:VARCHAR}
+		]]>
+	
+	</select>
 
 
 </mapper>

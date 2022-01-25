@@ -16,5 +16,10 @@ public class JoinService {
 		return joinDao.setJoinMember(joinVO);
 	}
 
+	public String getUserIdCheck(String userID) {
+		
+		return joinDao.getUserIdCheck(userID);
+	}
+
 	
 }

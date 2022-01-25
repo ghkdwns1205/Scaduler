@@ -3,31 +3,64 @@
 <head>
     <meta charset="UTF-8">
     <title>회원가입</title>
+    <script th:src="@{/js/jquery-1.11.0.min.js}"></script>
+<!-- ﻿<script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>﻿ -->
 </head>
-<script th:src="@{/js/jquery-1.11.0.min.js}"></script>
 <script th:inline="javascript">
-
 
 function idCheck(){
 	if($('#userID').val() == ""){
 		alert('아이디를 입력해주세요');
 	}else{
-		$.ajax({
-			url : '/join/idCheck',
-			data : {userID : $("#userID").val()},
-			type: 'POST',
-			success: function(obj){
-				if(obj.result == ok){
-					$("#id_chkPopup").html(data);
-				}else{
-					$("#id_chkPopup").html(data);
-				}
-			},
-			error : function(error){
-				alert('에러');
-				alert(error);
-			}
-		});
+		
+	 $.post("/join/idCheck", {
+	     userID: $("#userID").val() },
+	    function(obj){
+	       alert(1);
+	    }, 'json' )
+	    .done(function(obj){
+	    	alert(obj.msg);
+	    })
+	    .fail(function(obj){
+	    	alert('중복확인 실패');
+	    	
+	    });
+
+// 	 $.ajax ({
+
+// 		 type : "POST",                     // GET 또는 POST
+// 		 url : '/join/idCheck',          // 서버측에서 가져올 페이지
+// 		 data : 'userID='+$("#userID").val(),       // 서버측에 전달할 parameter
+// 		 timeout : 5000,                  // 응답대기시간 
+// 		 dataType : 'json',               // html , javascript, text, xml, jsonp 등이 있다
+// // 		 beforeSend: function() {      // ajax 요청하기전에 실행되는 함수
+
+// // 		 },
+
+// 		 success : function(data) {     // 정상적으로 완료되었을 경우에 실행된다
+// 			 alert(data.result);             // data 인수에는 return 되어진 data 가 저장되어 있다
+// 		 },
+
+// 		 error : function(error) {   // 오류가 발생했을 때 호출된다. 
+// 			alert(error.msg);
+// 		 },
+
+// // 		 complete : function () {   // 정상이든 비정상인든 실행이 완료될 경우 실행될 함수
+
+// // 		 }
+
+// 		 });
+
+
+
+		
+// 		$.post("/join/idCheck"),
+// 		{userID : $("#userID").val() },
+// 		 function(obj) {
+// 			alert(obj);
+// 		}
+		
+	
 	
 	 	
 	}

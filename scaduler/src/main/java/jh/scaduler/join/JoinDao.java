@@ -19,4 +19,9 @@ public class JoinDao {
 		return sqlSession.insert("JoinDao.setJoinMember", joinVO);
 	}
 
+	public String getUserIdCheck(String userID) {
+		
+		return sqlSession.selectOne("JoinDao.getUserIdCheck", userID);
+	}
+
 }
