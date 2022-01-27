@@ -13,43 +13,48 @@ function idCheck(){
 		alert('아이디를 입력해주세요');
 	}else{
 		
-	 $.post("/join/idCheck", {
-	     userID: $("#userID").val() },
-	    function(obj){
-	       alert(1);
-	    }, 'json' )
-	    .done(function(obj){
-	    	alert(obj.msg);
-	    })
-	    .fail(function(obj){
-	    	alert('중복확인 실패');
+// 	 $.post("/join/idCheck", {
+// 	     userID: $("#userID").val() },
+// 	    function(obj){
+// 	       alert(1);
+// 	    }, 'json' )
+// 	    .done(function(obj){
+// 	    	console.log(obj);
+// 	    	alert(obj.msg);
+// 	    })
+// 	    .fail(function(obj){
+// 	    	console.log(obj);
+// 	    	alert('중복확인 실패');
 	    	
-	    });
+// 	    });
 
-// 	 $.ajax ({
+	 $.ajax ({
 
-// 		 type : "POST",                     // GET 또는 POST
-// 		 url : '/join/idCheck',          // 서버측에서 가져올 페이지
-// 		 data : 'userID='+$("#userID").val(),       // 서버측에 전달할 parameter
-// 		 timeout : 5000,                  // 응답대기시간 
+		 type : "POST",                     // GET 또는 POST
+		 url : '/join/idCheck',          // 서버측에서 가져올 페이지
+		 data : 'userID='+$("#userID").val(),       // 서버측에 전달할 parameter
+		 timeout : 5000,                  // 응답대기시간 
+// 		 contentType : 'application/json;charset=utf-8',
 // 		 dataType : 'json',               // html , javascript, text, xml, jsonp 등이 있다
-// // 		 beforeSend: function() {      // ajax 요청하기전에 실행되는 함수
+// 		 beforeSend: function() {      // ajax 요청하기전에 실행되는 함수
 
-// // 		 },
-
-// 		 success : function(data) {     // 정상적으로 완료되었을 경우에 실행된다
-// 			 alert(data.result);             // data 인수에는 return 되어진 data 가 저장되어 있다
 // 		 },
 
-// 		 error : function(error) {   // 오류가 발생했을 때 호출된다. 
-// 			alert(error.msg);
-// 		 },
+		 success : function(data) {     // 정상적으로 완료되었을 경우에 실행된다
+			 alert("123"+data.msg);             // data 인수에는 return 되어진 data 가 저장되어 있다
+			 console.log(data);
+		 },
 
-// // 		 complete : function () {   // 정상이든 비정상인든 실행이 완료될 경우 실행될 함수
+		 error : function(error) {   // 오류가 발생했을 때 호출된다. 
+			alert("456"+error.msg);
+			console.log(error);
+		 },
 
-// // 		 }
+// 		 complete : function () {   // 정상이든 비정상인든 실행이 완료될 경우 실행될 함수
 
-// 		 });
+// 		 }
+
+		 });
 
 
 
