@@ -24,9 +24,10 @@ public class JoinRestController {
 		System.out.println("userIdCheck11==="+Util.NVL(userIdCheck));
 		
 		if(Util.NVL(userIdCheck).equals("")) {
-			result = "\"result\":\"ok\", \"msg\":\"사용가능한 아이디 입니다.\""; 
+			result = "{\"result\":\"ok\", \"msg\":\"사용가능한 아이디 입니다.\"}"; 
+//			result = "result=ok&msg=사용가능한 아이디 입니다"; 
 		}else {
-			result = "\"result\":\"error\", \"msg\":\"이미 사용중인 아이디 입니다.\""; 
+			result = "{\"result\":\"error\", \"msg\":\"이미 사용중인 아이디 입니다.\"}"; 
 		}
 		
 		return result;
