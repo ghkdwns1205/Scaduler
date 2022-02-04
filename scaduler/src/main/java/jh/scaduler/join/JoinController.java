@@ -22,7 +22,7 @@ public class JoinController {
 	@GetMapping(value="/join")
 	public String join() {
 		
-		return "join/join";
+		return "member/join";
 	}
 	
 	@RequestMapping(value="/join/member")
@@ -40,7 +40,7 @@ public class JoinController {
 		System.out.println("a==="+a);
 		
 		if(a == 1)
-			return "login/login";
+			return "member/login";
 		else
 			return "main";
 	}
