@@ -1,6 +1,7 @@
 package jh.scaduler.join;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -32,4 +33,25 @@ public class JoinRestController {
 		
 		return result;
 	}
+	
+	@RequestMapping(value="/join/member")
+	public String joinMember(JoinVO joinVO, Model model) {
+		
+		System.out.println("id==="+joinVO.getUserID());
+		System.out.println("pass==="+joinVO.getUserPass());
+		System.out.println("email==="+joinVO.getUserEmail());
+		joinVO.setUserPhone(joinVO.getUserPhone1()+joinVO.getUserPhone2()+joinVO.getUserPhone3());
+		System.out.println("phone==="+joinVO.getUserPhone());
+//		joinVO.setUserPass(Util.ShaEncode(joinVO.getUserPass()));
+//		
+//		
+//		int a = joinService.setJoinMember(joinVO);
+//		System.out.println("a==="+a);
+//		
+//		if(a == 1)
+//			return "{\"result\":\"ok\", \"msg\":\"회원가입 완료!\"}"; 
+//		else
+			return "{\"result\":\"error\", \"msg\":\"회원가입중 오류가 발생하였습니다.\"}"; 
+	}
+	
 }

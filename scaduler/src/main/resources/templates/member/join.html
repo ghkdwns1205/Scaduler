@@ -9,10 +9,54 @@
 </head>
 <script th:inline="javascript">
 
+$(function(){
+	
+	 var queryString = $("form[name=joinForm]").serialize() ;
+
+	$("#memberSubmit").click(function(){
+		if( !$("#joinForm")[0].checkValidity() ) return;
+		if( $("#userIdCheck").val() != 1 ){
+			alert('아이디 중복확인이 필요합니다.');
+		}
+		if( $("#userIdchk").val() != $("#userID").val() )
+			alert('아이디 중복확인이 필요합니다.');
+		
+		if( $("#userPass").val() != $("#userPassCheck").val() )
+			alert('비밀번호가 다릅니다');
+		
+		if( $("#userPassChk").val() != 1 )
+			alert('비밀번호가 다릅니다');
+		
+		$.ajax ({
+			
+			type : "POST",                   			  
+			url : '/join/member',         			
+			data : queryString,       
+			timeout : 5000,               			    
+			dataType : 'JSON',               			
+			success : function(obj) {        			 
+				if(obj.result == 'ok'){
+					location.href = "/login"
+				}else{
+					location.href = "/join"
+				}
+			},
+			error : function(error) {  				 // 오류가 발생했을 때 호출된다. 
+				
+		    },
+		});
+
+
+		
+	});
+});
+	
+
+
 
 function idCheck(){
 	
-	var userIdchk = "";
+	
 	
 	if($('#userID').val() == ""){
 		alert('아이디를 입력해주세요');
@@ -28,7 +72,7 @@ function idCheck(){
 			success : function(obj) {        			 // 정상적으로 완료되었을 경우에 실행된다
 				if(obj.result == 'ok'){
 					$("#userIdCheck").val(1);
-					userIdchk = $("#userID").val();
+					$("#userIdchk").val($("#userID").val());
 					alert(obj.msg);
 				}else{
 					alert(obj.msg);
@@ -54,9 +98,11 @@ function passChk() {
         if(document.getElementById('userPass').value==document.getElementById('userPassCheck').value) {
             document.getElementById('passCheck').innerHTML='비밀번호가 일치합니다.';
             document.getElementById('passCheck').style.color='blue';
+            $("#userPassChk").val(1);
         }else {
             document.getElementById('passCheck').innerHTML='비밀번호가 일치하지 않습니다.';
             document.getElementById('passCheck').style.color='red';
+            $("#userPassChk").val(0);
         }
     }
 }
@@ -71,10 +117,17 @@ function passChk() {
     	<span>비밀번호</span><input type="password" id="userPass" name="userPass" maxlength="15" onchange="passChk()" required="required"><br/>
     	<span>비밀번호 확인</span><input type="password" id="userPassCheck" name="userPassCheck" maxlength="15" required="required" onchange="passChk()"><br/>
     	<span id="passCheck"></span><br>
-    	<span>휴대폰 번호</span><input type="text" id="userPhone" name="userPhone" maxlength="20" required="required"><br/>
+    	<span>휴대폰 번호</span>
+    		<input type="text" id="userPhone1" name="userPhone1" maxlength="3" required="required" style="width:50px;">-
+    		<input type="text" id="userPhone2" name="userPhone2" maxlength="4" required="required" style="width:50px;">-
+    		<input type="text" id="userPhone3" name="userPhone3" maxlength="4" required="required" style="width:50px;">
+    	<br/>
     	<span>이메일</span><input type="email" id="userEmail" name="userEmail" maxlength="50" required="required"><br/>
     	<br/>
-    	<button id="memberInsert">가입</button>
+    	<input type="hidden" id="userIdchk" name="userIdchk" value="">
+    	<input type="hidden" id="userPassChk" name="userPassChk" value="0">
+    	
+    	<button id="memberSubmit">가입</button>
     	
     </form>
 </body>

@@ -25,25 +25,5 @@ public class JoinController {
 		return "member/join";
 	}
 	
-	@RequestMapping(value="/join/member")
-	public String joinMember(JoinVO joinVO, Model model) {
-		
-		System.out.println("id==="+joinVO.getUserID());
-		System.out.println("pass==="+joinVO.getUserPass());
-		System.out.println("phone==="+joinVO.getUserPhone());
-		System.out.println("email==="+joinVO.getUserEmail());
-		
-		joinVO.setUserPass(Util.ShaEncode(joinVO.getUserPass()));
-		
-		
-		int a = joinService.setJoinMember(joinVO);
-		System.out.println("a==="+a);
-		
-		if(a == 1)
-			return "member/login";
-		else
-			return "main";
-	}
-	
 	
 }
