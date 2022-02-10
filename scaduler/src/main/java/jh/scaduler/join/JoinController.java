@@ -15,7 +15,7 @@ import jh.scaduler.util.Util;
 
 @Controller
 public class JoinController {
-
+ 
 	@Autowired(required = false)
 	private JoinService joinService;
 	 

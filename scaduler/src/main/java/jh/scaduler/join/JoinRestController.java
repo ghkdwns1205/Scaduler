@@ -13,7 +13,7 @@ import jh.scaduler.util.Util;
 
 @RestController
 public class JoinRestController {
-
+ 
 	@Autowired(required = false)
 	private JoinService joinService;
 	
