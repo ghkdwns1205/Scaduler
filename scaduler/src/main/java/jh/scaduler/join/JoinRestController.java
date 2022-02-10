@@ -35,7 +35,7 @@ public class JoinRestController {
 		
 		return result;
 	}
-	
+	 
 	@RequestMapping(value="/join/member" , produces = "application/json; charset=utf8")
 	public String joinMember(JoinVO joinVO) {
 		

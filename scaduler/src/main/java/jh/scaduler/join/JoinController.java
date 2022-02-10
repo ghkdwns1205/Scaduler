@@ -18,7 +18,7 @@ public class JoinController {
 
 	@Autowired(required = false)
 	private JoinService joinService;
-	
+	 
 	@GetMapping(value="/join")
 	public String join() {
 		
