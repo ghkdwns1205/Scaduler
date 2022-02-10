@@ -11,22 +11,30 @@
 
 $(function(){
 	
-	 var queryString = $("form[name=joinForm]").serialize() ;
-
+	 var queryString =  $("#joinForm").serialize();
+	
 	$("#memberSubmit").click(function(){
+		
 		if( !$("#joinForm")[0].checkValidity() ) return;
-		if( $("#userIdCheck").val() != 1 ){
+		if( $("#userIdCheck").val() != 1 ) {
 			alert('아이디 중복확인이 필요합니다.');
+			return
 		}
-		if( $("#userIdchk").val() != $("#userID").val() )
+		if( $("#userIdchk").val() != $("#userID").val() ){
 			alert('아이디 중복확인이 필요합니다.');
-		
-		if( $("#userPass").val() != $("#userPassCheck").val() )
+			return
+		}
+		if( $("#userPass").val() != $("#userPassCheck").val() ){
 			alert('비밀번호가 다릅니다');
-		
-		if( $("#userPassChk").val() != 1 )
+			return
+		}
+		if( $("#userPassChk").val() != 1 ){
 			alert('비밀번호가 다릅니다');
+			return
+		}
 		
+		$("#joinForm").attr("onsubmit","true");
+// 		$("#joinForm").submit();
 		$.ajax ({
 			
 			type : "POST",                   			  
@@ -36,9 +44,11 @@ $(function(){
 			dataType : 'JSON',               			
 			success : function(obj) {        			 
 				if(obj.result == 'ok'){
-					location.href = "/login"
+					alert(obj.msg);
+					window.location.href = "/login";
 				}else{
-					location.href = "/join"
+					alert(obj.msg);
+					window.location.href = "/join";
 				}
 			},
 			error : function(error) {  				 // 오류가 발생했을 때 호출된다. 
