@@ -84,12 +84,14 @@ function idCheck(){
 					$("#userIdCheck").val(1);
 					$("#userIdchk").val($("#userID").val());
 					alert(obj.msg);
+				 	location.href = '/login'	
 				}else{
+					$("#userIdCheck").val(0);
 					alert(obj.msg);
 				}
 			},
 			error : function(error) {  				 // 오류가 발생했을 때 호출된다. 
-				alert("456"+error);
+				alert("456"+error.msg);
 				console.log(error);
 		    },
 		});

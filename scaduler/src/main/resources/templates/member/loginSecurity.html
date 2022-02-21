@@ -1,0 +1,14 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>로그인</title>
+</head>
+<body>
+    여기 시큐리티 로그인하는 페이지  
+    <form method="post" action="/login/security">
+    <input type="text" id="securityUserID" name="securityUserID" maxlength="50" required="required" onsubmit="return false">
+    <input type="password" id="securityUserPass" name="securityUserPass" maxlength="15" required="required" >
+    </form>
+</body>
+</html>
