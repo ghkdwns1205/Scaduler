@@ -37,18 +37,18 @@ public class JoinRestController {
 	}
 	 
 	@RequestMapping(value="/join/member" , produces = "application/json; charset=utf8")
-	public String joinMember(JoinVO joinVO) {
+	public String joinMember(MemberVO memberVO) {
 		
 		String msg = "";
-		System.out.println("id==="+joinVO.getUserID());
-		System.out.println("pass==="+joinVO.getUserPass());
-		System.out.println("email==="+joinVO.getUserEmail());
-		joinVO.setUserPhone(joinVO.getUserPhone1()+joinVO.getUserPhone2()+joinVO.getUserPhone3());
-		System.out.println("phone==="+joinVO.getUserPhone());
-		joinVO.setUserPass(Util.ShaEncode(joinVO.getUserPass()));
+		System.out.println("id==="+memberVO.getUserID());
+		System.out.println("pass==="+memberVO.getUserPass());
+		System.out.println("email==="+memberVO.getUserEmail());
+		memberVO.setUserPhone(memberVO.getUserPhone1()+memberVO.getUserPhone2()+memberVO.getUserPhone3());
+		System.out.println("phone==="+memberVO.getUserPhone());
+		memberVO.setUserPass(Util.ShaEncode(memberVO.getUserPass()));
 		
 		
-		int a = joinService.setJoinMember(joinVO);
+		int a = joinService.setJoinMember(memberVO);
 		System.out.println("a==="+a);
 		
 		if(a == 1)

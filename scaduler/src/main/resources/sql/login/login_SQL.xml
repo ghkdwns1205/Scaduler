@@ -4,12 +4,11 @@
 
 	
 	
-	<select id="getUserIdCheck" parameterType="loginDto" resultType="String">
+	<select id="getUserChk" parameterType="jh.scaduler.login.LoginDto" resultType="jh.scaduler.join.MemberVO">
 		<![CDATA[
-			select userID from member
-			where userID = #{userID:VARCHAR}
+			select * from member
+			where userID = #{sessionUserID:VARCHAR}
 		]]>
-	
 	</select>
 
 

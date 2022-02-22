@@ -14,9 +14,9 @@ public class JoinDao {
 	@Autowired(required=false)
 	private SqlSessionTemplate sqlSession;
 	
-	public int setJoinMember(JoinVO joinVO) {
+	public int setJoinMember(MemberVO memberVO) {
 		
-		return sqlSession.insert("JoinDao.setJoinMember", joinVO);
+		return sqlSession.insert("JoinDao.setJoinMember", memberVO);
 	}
 
 	public String getUserIdCheck(String userID) {

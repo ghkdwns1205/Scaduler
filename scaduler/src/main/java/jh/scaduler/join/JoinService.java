@@ -11,9 +11,9 @@ public class JoinService {
 	@Autowired(required = false)
 	private JoinDao joinDao;
 	
-	public int setJoinMember(JoinVO joinVO) {
+	public int setJoinMember(MemberVO memberVO) {
 		
-		return joinDao.setJoinMember(joinVO);
+		return joinDao.setJoinMember(memberVO);
 	}
 
 	public String getUserIdCheck(String userID) {

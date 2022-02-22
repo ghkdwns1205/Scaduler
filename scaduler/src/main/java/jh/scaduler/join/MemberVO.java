@@ -3,9 +3,9 @@ package jh.scaduler.join;
 import org.apache.ibatis.type.Alias;
 import org.springframework.stereotype.Repository;
 
-@Alias("JoinVO")
+@Alias("memberVO")
 @Repository
-public class JoinVO {
+public class MemberVO {
 
 	private String userID;
 	private String userPass;
