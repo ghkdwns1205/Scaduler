@@ -4,11 +4,13 @@
     <meta charset="UTF-8">
     <title>메인</title>
 </head>
+<th:block th:replace="/fragment/config :: configFragment"></th:block>
 <body> 
-    메인입니다~ 
-    테스트 아이디 = <span th:text="${testId}"></span>
-    <a href="/loginSession"><button th:text="|세션 로그인|"></button></a>
-    <a href="/loginSecurity"><button th:text="|시큐리티 로그인|"></button></a>
-    <a href="/join"><button th:text="회원가입"></button></a>
+	<div class="wrap">
+		<div th:replace="/fragment/header :: headerFragment"></div>
+		<div th:replace="/fragment/sub :: subFragment"></div>
+		<div th:replace="/fragment/content :: sectionFragment"></div>
+	    <div th:replace="/fragment/footer :: footerFragment"></div>
+    </div>
 </body>
 </html>
